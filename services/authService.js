@@ -29,9 +29,6 @@ router.post('/login',async (req,res) =>{
     res.setHeader('Access-Control-Allow-Origin', "https://mywebapp-506a1.firebaseapp.com");
     var userData =  req.body
     var user= await User.findOne({email:userData.email});
-    console.log('find a bağlanırken hata')
-    console.log(JSON.stringify(user))
-    console.log(JSON.stringify(userData))
     if(!user){
         console.log('logine bağlanırken hata')
         return res.status(400).send({message:"invalid email or password"})
@@ -44,7 +41,6 @@ router.post('/login',async (req,res) =>{
         console.log('logine 3 bağlanırken hata')
         return res.status(400).send({message:"invalid email or password"}) 
     }
-    console.log('logine 4 bağlanırken hata')
     var name = user.firstName
     var lastName = user.lastName;
     var email = user.email;

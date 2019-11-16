@@ -15,18 +15,14 @@ app.use(bodyParser.json());
 app.use((req,res,next)=>{
    
     res.header("Access-Control-Allow-Origin", '*');
-    console.log('Access-Control-Allow-Origin')
     res.header("Access-Control-Allow-Credentials", true);
-    console.log('Access-Control-Allow-Credentials')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    console.log('Access-Control-Allow-Methods')
     res.header("Access-Control-Allow-Headers", 'Authorization,Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-    console.log('Access-Control-Allow-Headers')
     next();
     })
 
 //database'e bağlanma
-mongoose.connect("mongodb+srv://hakan:199212267474@cluster0-mx04j.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true },(error) =>{
+mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true },(error) =>{
     if(!error){
         console.log('Mongoya Bağlandık')
     }else if(error){
