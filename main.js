@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var socketIO = require('socket.io');
 
-
+mongoose.createConnection(process.env.MONGOLAB_URI)
 
 var app = express();
 
