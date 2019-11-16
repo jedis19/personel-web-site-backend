@@ -14,10 +14,15 @@ var authService = require('./services/authService');
 app.use(bodyParser.json());
 
 app.use((req,res,next)=>{
+   
     res.header("Access-Control-Allow-Origin", '*');
+    console.log('Access-Control-Allow-Origin')
     res.header("Access-Control-Allow-Credentials", true);
+    console.log('Access-Control-Allow-Credentials')
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    console.log('Access-Control-Allow-Methods')
     res.header("Access-Control-Allow-Headers", 'Authorization,Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    console.log('Access-Control-Allow-Headers')
     next();
     })
 
@@ -29,13 +34,8 @@ mongoose.connect("mongodb+srv://hakan:199212267474@cluster0-mx04j.mongodb.net/te
     
 })
 
-var corsOptions = {
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-  }
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 //service'lerin kullanılması
 app.use('/user',authService.router);
