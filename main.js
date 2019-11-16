@@ -22,7 +22,7 @@ app.use((req,res,next)=>{
     })
 
 //database'e bağlanma
-mongoose.connect(process.env.MONGODB_URI,{ useNewUrlParser: true },(error) =>{
+mongoose.connect(process.env.MONGOLAB_BLACK_URI,{ useNewUrlParser: true },(error) =>{
     if(!error){
         console.log('Mongoya Bağlandık')
     }else if(error){
