@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jwt-simple')
-
+var cors = require('cors')
 var User = require("../models/user")
 
 
+router.use(cors())
 //Kayıt olma işlemi
 router.post('/register',async (req,res) =>{
     var user = new User(req.body);
