@@ -30,6 +30,9 @@ app.use((req,res,next)=>{
 mongoose.connect("mongodb+srv://hakan:199212267474@cluster0-mx04j.mongodb.net/test?retryWrites=true&w=majority",{ useNewUrlParser: true },(error) =>{
     if(!error){
         console.log('Mongoya Bağlandık')
+    }else if(error){
+        console.log('mongoya bağlanırken hata oldu')
+        console.log(error)
     }
     
 })
