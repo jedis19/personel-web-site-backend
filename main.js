@@ -44,9 +44,7 @@ app.get('/get',(req,res) => {
     res.send('merhaba get');
 })
 
-app.get('/get',(req,res) => {
-    res.send('merhaba get');
-})
+
 
 var server = app.listen(process.env.PORT);
 
