@@ -26,7 +26,7 @@ router.post('/register',async (req,res) =>{
 
 //Login işlemi
 router.post('/login',async (req,res) =>{
-    res.setHeader('Access-Control-Allow-Origin', "https://mywebapp-506a1.firebaseapp.com");
+    res.setHeader('Access-Control-Allow-Origin', "*");
     var userData =  req.body
     var user= await User.findOne({email:userData.email});
     if(!user){
