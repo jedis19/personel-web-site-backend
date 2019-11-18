@@ -30,16 +30,13 @@ router.post('/login',async (req,res) =>{
     var userData =  req.body
     var user= await User.findOne({email:userData.email});
     if(!user){
-        console.log('logine bağlanırken hata')
-        return res.status(400).send({message:"invalid email or password"})
+        return res.status(404).send("invalid email or password")
     }
     if(userData.email != user.email){
-        console.log('logine 2 bağlanırken hata')
-        return res.status(400).send({message:"invalid email or password"}) 
+        return res.status(404).send("invalid email or password") 
     }
     if(userData.password != user.password){
-        console.log('logine 3 bağlanırken hata')
-        return res.status(400).send({message:"invalid email or password"}) 
+        return res.status(404).send("invalid email or password") 
     }
     var name = user.firstName
     var lastName = user.lastName;
