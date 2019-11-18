@@ -8,6 +8,7 @@ var User = require("../models/user")
 router.use(cors())
 //Kayıt olma işlemi
 router.post('/register',async (req,res) =>{
+    res.setHeader('Access-Control-Allow-Origin', "https://www.hakangeyik.site");
     var user = new User(req.body);
     var checkUser = await User.findOne({email:user.email})
     if(!checkUser){
@@ -26,7 +27,7 @@ router.post('/register',async (req,res) =>{
 
 //Login işlemi
 router.post('/login',async (req,res) =>{
-    res.setHeader('Access-Control-Allow-Origin', "*");
+    res.setHeader('Access-Control-Allow-Origin', "https://www.hakangeyik.site");
     var userData =  req.body
     var user= await User.findOne({email:userData.email});
     if(!user){
