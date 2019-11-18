@@ -19,7 +19,7 @@ router.post('/register',async (req,res) =>{
         })
     }
     if(checkUser){
-        return res.status(400).send({message:'Bu maile ait bir üyelik zaten var'})
+        return res.status(401).send({message:'Bu maile ait bir üyelik zaten var'})
     }
    
 })
@@ -30,13 +30,13 @@ router.post('/login',async (req,res) =>{
     var userData =  req.body
     var user= await User.findOne({email:userData.email});
     if(!user){
-        return res.status(404).send("invalid email or password")
+        return res.status(401).send({message:"invalid email or password"})
     }
     if(userData.email != user.email){
-        return res.status(404).send("invalid email or password") 
+        return res.status(401).send({message:"invalid email or password"}) 
     }
     if(userData.password != user.password){
-        return res.status(404).send("invalid email or password") 
+        return res.status(401).send({message:"invalid email or password"}) 
     }
     var name = user.firstName
     var lastName = user.lastName;
